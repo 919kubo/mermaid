@@ -1,4 +1,5 @@
 flowchart TB
+  A --> B
   %% title: study-dx Top Structure (L1)
   %% service: PoC Blueprint
   %% purpose: Landing page information architecture + demo funnel
@@ -28,3 +29,4 @@ flowchart TB
   A_Contact["問い合わせ（CTA）\n・デモ申請\n・相談フォーム\n・連絡先"] --> A_Footer
 
   A_Footer["フッター\n・note（非エンジニア向け）\n・note（エンジニア向け）\n・X（非エンジニア）\n・X（エンジニア）\n・ポリシー/利用規約"]
+
