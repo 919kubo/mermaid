@@ -1,6 +1,8 @@
 # study-dx Top Structure（L1）
 
 ```mermaid
+flowchart TD
+    A --> B
 %% title: study-dx Top Structure (L1)
 %% service: PoC Blueprint
 %% updated: 2026-01-13
