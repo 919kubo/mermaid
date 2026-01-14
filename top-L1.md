@@ -7,7 +7,6 @@ flowchart TD
 %% service: PoC Blueprint
 %% updated: 2026-01-13
 
-flowchart TB
   %% title: study-dx Top Structure (L1)
   %% service: PoC Blueprint
   %% purpose: Landing page information architecture + demo funnel
