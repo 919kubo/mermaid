@@ -30,4 +30,3 @@ flowchart TB
   A_Contact["問い合わせ（CTA）<br/>・デモ申請<br/>・相談フォーム<br/>・連絡先"] --> A_Footer
 
   A_Footer["フッター<br/>・note（非エンジニア向け）<br/>・note（エンジニア向け）<br/>・X（非エンジニア）<br/>・X（エンジニア）<br/>・ポリシー/利用規約"]
-
