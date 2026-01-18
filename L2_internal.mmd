@@ -1,0 +1,45 @@
+%% title: 英検DX（L1）学習支援DX 全体像
+%% service: PoC Blueprint - EIKEN DX
+%% purpose: 学習ログをAIが翻訳し、コーチングに変換する
+%% updated: 2026-01-15
+
+flowchart TB
+
+A_User["学習者（生徒）<br/>・勉強する<br/>・テストを受ける<br/>・写真を撮る<br/>・Trelloを触るだけ"] --> B_Capture
+
+subgraph B_Capture["学習ログの自動収集（入力を減らす）"]
+direction TB
+B1_Trello["Trello（無料UI）<br/>カード：タスク/期限/完了/遅延"]
+B2_Form["Googleフォーム<br/>学習記録/目標/自己申告"]
+B3_Photo["テストプリント写真<br/>間違い・弱点の証拠"]
+end
+
+B_Capture --> C_Integrate["統合・整形（前処理）<br/>・週次集計<br/>・学習イベント化<br/>・データ欠損を検知"]
+
+C_Integrate --> D_AI["ChatGPT（翻訳・標準化エンジン）<br/>・要約<br/>・分類/タグ付け<br/>・ボトルネック抽出"]
+
+subgraph D_AI2["AI分析（コーチングへ変換）"]
+direction TB
+D1_Progress["進捗分析<br/>完了率/遅延/詰まりポイント"]
+D2_Weakness["弱点抽出<br/>語彙/文法/構文/読解タイプ"]
+D3_Mastery["記憶済み判定<br/>正答率・反復回数で判定"]
+D4_Predict["合格予測<br/>推移と残課題から見積り"]
+end
+
+D_AI --> D_AI2
+
+D_AI2 --> E_Output
+
+subgraph E_Output["コーチング出力（人に返すのは指示と報告）"]
+direction TB
+E1_QA["自然言語Q&A（LINE想定）<br/>「今週どう？」→要約回答"]
+E2_Report["週次レポート（Gmail）<br/>本人/保護者へ自動送信"]
+E3_Next["次にやること（タスク化）<br/>優先度/期限を付与してTrelloへ"]
+E4_Gen["問題自動作成（弱点ベース）<br/>記憶済み→長文生成にも拡張"]
+end
+
+E_Output --> F_Loop["改善ループ（PoCの核）<br/>・質問が多い項目をレポートへ統合<br/>・弱点DBを成長させる<br/>・テンプレ化して再利用"]
+
+%% System notes
+B1_Trello -.-> N1["注意：無料枠のAPI制限/Webhook制限<br/>ポーリング頻度（例：1時間に1回）設計"]
+F_Loop -.-> N2["将来オプション：ナレッジ蓄積（Notion等）<br/>英検→準1級/TOEIC転換にも流用"]
